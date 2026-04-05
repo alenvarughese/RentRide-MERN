@@ -24,6 +24,9 @@ app.use('/api/payments', require('./routes/payments'))
 app.use('/api/reviews', require('./routes/reviews'))
 app.use('/api/coupons', require('./routes/coupons'))
 
+// Root route
+app.get('/', (req, res) => res.send('🚀 RentRide API is running...'))
+
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }))
 
