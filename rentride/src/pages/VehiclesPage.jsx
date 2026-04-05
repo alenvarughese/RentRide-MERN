@@ -40,9 +40,12 @@ export default function VehiclesPage() {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
+        console.log('📡 Fetching vehicles from:', axios.defaults.baseURL + '/api/vehicles')
         const { data } = await axios.get('/api/vehicles')
+        console.log('✅ Vehicles received:', data.count)
         setVehicles(data.vehicles || [])
       } catch (err) {
+        console.error('❌ API Error:', err)
         setError(err.response?.data?.message || 'Failed to fetch vehicles')
       } finally {
         setLoading(false)
